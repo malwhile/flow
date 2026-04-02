@@ -1,0 +1,107 @@
+baseurl = "https://flow.halvo.me"
+languageCode = "en-us"
+title = "Flow With Halvo"
+# Add it only if you keep the theme in the `themes` directory.
+# Remove it if you use the theme as a remote Hugo Module.
+theme = "hugo-theme-terminal"
+paginate = 5
+
+[params]
+  custom_css = ["css/table.css"]
+  # dir name of your main content (default is `content/posts`).
+  # the list of set content will show up on your index page (baseurl).
+  contentTypeName = "posts"
+
+  # ["orange", "blue", "red", "green", "pink"]
+  themeColor = "green"
+
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 2
+
+  # show selector to switch language
+  showLanguageSelector = false
+
+  # set theme to full screen width
+  fullWidthTheme = false
+
+  # center theme with default width
+  centerTheme = true
+
+  # if your resource directory contains an image called `cover.(jpg|png|webp)`,
+  # then the file will be used as a cover automatically.
+  # With this option you don't have to put the `cover` param in a front-matter.
+  autoCover = true
+
+  # set post to show the last updated
+  # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
+  showLastUpdated = false
+
+  # set a custom favicon (default is a `themeColor` square)
+  # favicon = "favicon.ico"
+
+  # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
+  # updatedDatePrefix = "Updated"
+
+  # set all headings to their default size (depending on browser settings)
+  oneHeadingSize = false
+
+  # whether to show a page's estimated reading time
+  readingTime = true
+
+  # whether to show a table of contents
+  # can be overridden in a page's front-matter
+  Toc = true
+
+  # set title for the table of contents
+  # can be overridden in a page's front-matter
+  # TocTitle = "Table of Contents" # default
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    title = "Flow With Halvo"
+    copyright = ""
+
+    [language.en.params]
+      subtitle = "Basic Security Blog"
+      owner = "Paul Halvorsen"
+      keywords = ""
+      menuMore = "Show more"
+      readMore = "Read more"
+      readOtherPosts = "Read other posts"
+      newerPosts = "Newer posts"
+      olderPosts = "Older posts"
+      missingContentMessage = "Page not found..."
+      missingBackButtonLabel = "Back to home page"
+
+    [languages.en.params.logo]
+      logoText = "Flow With Halvo"
+      logoHomeLink = "/"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+        weight = 10
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts"
+        weight = 20
+      [[languages.en.menu.main]]
+        identifier = "ideas"
+        name = "Ideas"
+        url = "/ideas"
+        weight = 25
+      [[languages.en.menu.main]]
+        identifier = "podcasts"
+        name = "Podcasts"
+        url = "/podcasts"
+        weight = 30
+      [[languages.en.menu.main]]
+        identifier = "personal"
+        name = "Other Posts"
+        url = "/pposts"
+        weight = 40
+

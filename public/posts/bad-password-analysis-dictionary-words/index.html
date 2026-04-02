@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Bad Password Analysis Dictionary Words :: Flow With Halvo</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Introduction For this episode of bad analysis, we are going to be looking at word frequency in passwords. Overall this isn&amp;rsquo;t terrible analysis, but what makes it bad is I&amp;rsquo;m just looking for the first occurrence of a dictionary word in each password. This will miss a lot of words in passwords.
+Additionally we will miss words because:
+Only the first dictionary word in each password is used Only American English words found in the Linux American English dictionary are used No common replacements are used for numbers or symbols (all of those are just blanked out) No common misspellings are corrected Plurals are considered unique words We are missing a lot of words in these passwords, but that is why this is bad analysis." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://flow.halvo.me/posts/bad-password-analysis-dictionary-words/" />
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://flow.halvo.me/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://flow.halvo.me/img/theme-colors/green.png">
+  <link rel="apple-touch-icon" href="https://flow.halvo.me/img/theme-colors/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Bad Password Analysis Dictionary Words">
+<meta property="og:description" content="Introduction For this episode of bad analysis, we are going to be looking at word frequency in passwords. Overall this isn&amp;rsquo;t terrible analysis, but what makes it bad is I&amp;rsquo;m just looking for the first occurrence of a dictionary word in each password. This will miss a lot of words in passwords.
+Additionally we will miss words because:
+Only the first dictionary word in each password is used Only American English words found in the Linux American English dictionary are used No common replacements are used for numbers or symbols (all of those are just blanked out) No common misspellings are corrected Plurals are considered unique words We are missing a lot of words in these passwords, but that is why this is bad analysis." />
+<meta property="og:url" content="https://flow.halvo.me/posts/bad-password-analysis-dictionary-words/" />
+<meta property="og:site_name" content="Flow With Halvo" />
+
+  
+    <meta property="og:image" content="https://flow.halvo.me/img/favicon/green.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2021-03-11 18:55:01 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="green">
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Flow With Halvo
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/ideas">Ideas</a></li>
+        
+      
+        
+          <li><a href="/podcasts">Podcasts</a></li>
+        
+      
+        
+          <li><a href="/pposts">Other Posts</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+      
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">&nbsp;▾</li>
+            <li>
+              <ul class="menu__dropdown">
+                
+                  
+                    <li><a href="/ideas">Ideas</a></li>
+                  
+                
+                  
+                    <li><a href="/podcasts">Podcasts</a></li>
+                  
+                
+                  
+                    <li><a href="/pposts">Other Posts</a></li>
+                  
+                
+              </ul>
+            </li>
+          </ul>
+        </li>
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://flow.halvo.me/posts/bad-password-analysis-dictionary-words/">Bad Password Analysis Dictionary Words</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2021-03-11 ::
+        
+      </time>
+    
+    
+    
+      <span class="post-reading-time">:: 4 min read (649 words)</span>
+    
+  </div>
+
+  
+  
+
+
+  
+    <div class="table-of-contents">
+      <h2>
+        Table of Contents
+      </h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#results">Results</a>
+      <ul>
+        <li><a href="#raw-data">Raw Data</a></li>
+        <li><a href="#additional-fun-stuff">Additional Fun Stuff</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#future-work">Future Work</a></li>
+  </ul>
+</nav>
+    </div>
+  
+
+  <div class="post-content"><div>
+        <h2 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>For this episode of bad analysis, we are going to be looking at word frequency in passwords. Overall this isn&rsquo;t terrible analysis, but what makes it bad is I&rsquo;m just looking for the first occurrence of a dictionary word in each password. This will miss <em>a lot</em> of words in passwords.</p>
+<p>Additionally we will miss words because:</p>
+<ol>
+<li>Only the first dictionary word in each password is used</li>
+<li>Only American English words found in the Linux American English dictionary are used</li>
+<li>No common replacements are used for numbers or symbols (all of those are just blanked out)</li>
+<li>No common misspellings are corrected</li>
+<li>Plurals are considered unique words</li>
+</ol>
+<p>We are missing a lot of words in these passwords, but that is why this is bad analysis.</p>
+<h2 id="data">Data<a href="#data" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>The passwords come from several leaks. These include honey-net, MySpace, rockyou, hotmail, phpbb, and tuscl lists. All of these lists contain the count of how many times a password was used as well. Total there are 14,584,438 unique passwords.</p>
+<p>This took forever to loop through, pulling out the words, then comparing them to the dictionary words. My code is only single threaded and doesn&rsquo;t use any additional efficiencies. It took around 15 hours to complete &hellip; so if anything went wrong, I&rsquo;m not running it again :) Maybe at some point I&rsquo;ll multi thread it and see if it can run a little faster.</p>
+<p>I&rsquo;m comparing the password list to the American English word list found on Linux. There may be a more complete list somewhere out there, but this worked for me.</p>
+<h2 id="results">Results<a href="#results" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h3 id="raw-data">Raw Data<a href="#raw-data" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The word were extracted, counted, and sorted. There were 68,402 unique words, the top 10 words account for around 5% of total words seen, and there were 21,191 unique words only seen in their own password.</p>
+<p>Here are the top 10 words used in the passwords (with the caveats above):</p>
+<p>All percentages are approximate</p>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th style="text-align:right">Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>love</td>
+<td style="text-align:right">2.0 %</td>
+</tr>
+<tr>
+<td>baby</td>
+<td style="text-align:right">0.7 %</td>
+</tr>
+<tr>
+<td>password</td>
+<td style="text-align:right">0.4 %</td>
+</tr>
+<tr>
+<td>angel</td>
+<td style="text-align:right">0.4 %</td>
+</tr>
+<tr>
+<td>ana</td>
+<td style="text-align:right">0.4 %</td>
+</tr>
+<tr>
+<td>princess</td>
+<td style="text-align:right">0.3 %</td>
+</tr>
+<tr>
+<td>sexy</td>
+<td style="text-align:right">0.3 %</td>
+</tr>
+<tr>
+<td>girl</td>
+<td style="text-align:right">0.2 %</td>
+</tr>
+<tr>
+<td>and</td>
+<td style="text-align:right">0.2 %</td>
+</tr>
+<tr>
+<td>ito</td>
+<td style="text-align:right">0.2 %</td>
+</tr>
+</tbody>
+</table>
+<h3 id="additional-fun-stuff">Additional Fun Stuff<a href="#additional-fun-stuff" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>How positive are people&rsquo;s passwords. Using a list of positive words found at <a href="https://gist.github.com/mkulakowski2/4289437">Positive List</a> and a list of negative words found at <a href="https://gist.github.com/mkulakowski2/4289441">Negative List</a>, I&rsquo;ve compared to our word frequency from our list.</p>
+<p>Positive words were used 1,172,617 times and negative words were used 1,172,617. As an optimist at heart, this didn&rsquo;t surprise me too much. Let&rsquo;s take a closer look and look at the top 5 words in each category.</p>
+<table>
+<thead>
+<tr>
+<th>Positive</th>
+<th style="text-align:right">Number</th>
+<th style="text-align:right">Negative</th>
+<th style="text-align:right">Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>love</td>
+<td style="text-align:right">442,689</td>
+<td style="text-align:right">f**k</td>
+<td style="text-align:right">53,969</td>
+</tr>
+<tr>
+<td>angel</td>
+<td style="text-align:right">98,154</td>
+<td style="text-align:right">rocky</td>
+<td style="text-align:right">41,655</td>
+</tr>
+<tr>
+<td>sexy</td>
+<td style="text-align:right">65,062</td>
+<td style="text-align:right">mar</td>
+<td style="text-align:right">38,915</td>
+</tr>
+<tr>
+<td>sweet</td>
+<td style="text-align:right">44,192</td>
+<td style="text-align:right">bi**h</td>
+<td style="text-align:right">38,262</td>
+</tr>
+<tr>
+<td>lover</td>
+<td style="text-align:right">39,794</td>
+<td style="text-align:right">crazy</td>
+<td style="text-align:right">21,330</td>
+</tr>
+</tbody>
+</table>
+<p>Looking at positive and negative occurrences has it&rsquo;s own issues beyond just the word analysis. As you can see there are certain omissions that I would think would be in positive, like &ldquo;baby.&rdquo; There are also inclusions in negative that I would not have made, such as &ldquo;mar&rdquo; which could just be March for someone&rsquo;s birthday. Better lists would need to be found or crafted, or entire passwords would need a language processor to determine if they are negative or positive.</p>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Not much to conclude here, mostly this was for fun. Don&rsquo;t use dictionary words in your password, it doesn&rsquo;t take long to loop through the dictionary, and if you do, try to use longer random words, rather then meaningful ones.</p>
+<p>People tend to be more positive in their passwords which is nice to see.</p>
+<p>This was a lot of fun to implement and I may come back to this to see if I can improve upon looking at words.</p>
+<h2 id="future-work">Future Work<a href="#future-work" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<ul>
+<li>Thread all the things, maybe it&rsquo;ll run faster.</li>
+<li>Look for more than just the first word in each password</li>
+<li>Replace numbers with common letters (like 4 becomes a and 3 becomes e)</li>
+<li>Maybe look for plurals as the same</li>
+</ul>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://flow.halvo.me/posts/secure-coding-in-c-summations-null-terminate/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Always null Terminate: Summations of Secure Coding in C and C&#43;&#43;</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://flow.halvo.me/posts/bad-malware-analysis-string-size-ratio/">
+                <span class="button__text">Bad Malware Analysis: String Count vs File Size</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Set to NULL After Free: Summations of Secure Coding in C and C&#43;&#43; :: Flow With Halvo</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Introduction Continuing the series of summarizing the themes in &amp;ldquo;Secure Coding in C and C&#43;&#43;&amp;rdquo; by Robert C. Seacord, we will discuss freeing pointers. The title of this section is specifically about setting to NULL after calling free, but this post will cover a lot more than that. Here we will discuss the problems with forgetting to free, functions whose return value needs to be freed, and freeing without allocating/double free." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://flow.halvo.me/posts/secure-coding-in-c-summations-free-and-null/" />
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://flow.halvo.me/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://flow.halvo.me/img/theme-colors/green.png">
+  <link rel="apple-touch-icon" href="https://flow.halvo.me/img/theme-colors/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Set to NULL After Free: Summations of Secure Coding in C and C&#43;&#43;">
+<meta property="og:description" content="Introduction Continuing the series of summarizing the themes in &amp;ldquo;Secure Coding in C and C&#43;&#43;&amp;rdquo; by Robert C. Seacord, we will discuss freeing pointers. The title of this section is specifically about setting to NULL after calling free, but this post will cover a lot more than that. Here we will discuss the problems with forgetting to free, functions whose return value needs to be freed, and freeing without allocating/double free." />
+<meta property="og:url" content="https://flow.halvo.me/posts/secure-coding-in-c-summations-free-and-null/" />
+<meta property="og:site_name" content="Flow With Halvo" />
+
+  
+    <meta property="og:image" content="https://flow.halvo.me/img/favicon/green.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2022-08-17 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="green">
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Flow With Halvo
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/ideas">Ideas</a></li>
+        
+      
+        
+          <li><a href="/podcasts">Podcasts</a></li>
+        
+      
+        
+          <li><a href="/pposts">Other Posts</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+      
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">&nbsp;▾</li>
+            <li>
+              <ul class="menu__dropdown">
+                
+                  
+                    <li><a href="/ideas">Ideas</a></li>
+                  
+                
+                  
+                    <li><a href="/podcasts">Podcasts</a></li>
+                  
+                
+                  
+                    <li><a href="/pposts">Other Posts</a></li>
+                  
+                
+              </ul>
+            </li>
+          </ul>
+        </li>
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://flow.halvo.me/posts/secure-coding-in-c-summations-free-and-null/">Set to NULL After Free: Summations of Secure Coding in C and C++</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2022-08-17 ::
+        
+      </time>
+    
+    
+    
+      <span class="post-reading-time">:: 4 min read (792 words)</span>
+    
+  </div>
+
+  
+  
+
+
+  
+    <div class="table-of-contents">
+      <h2>
+        Table of Contents
+      </h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#always-free-when-done">Always <code>free</code> When Done</a>
+      <ul>
+        <li><a href="#memory-leaks">Memory Leaks</a></li>
+        <li><a href="#vulnerabilities">Vulnerabilities</a></li>
+      </ul>
+    </li>
+    <li><a href="#knowing-when-to-free">Knowing When to <code>free</code></a></li>
+    <li><a href="#knowing-when-not-to-free">Knowing When NOT to <code>free</code></a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+  
+
+  <div class="post-content"><div>
+        <h2 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Continuing the series of summarizing the themes in &ldquo;Secure Coding in C and C++&rdquo; by Robert C. Seacord, we will discuss freeing pointers. The title of this section is specifically about setting to <code>NULL</code> after calling free, but this post will cover a lot more than that. Here we will discuss the problems with forgetting to free, functions whose return value needs to be freed, and freeing without allocating/double free.</p>
+<p>As for the title of this piece, some of the most common problems can be solved simply by setting pointers to <code>NULL</code> at declaration or after freeing.</p>
+<p>This is written for an audience that has a broad overview of security concepts. Not much time is spent explaining each concept, and I encourage everyone to read the book.</p>
+<h2 id="always-free-when-done">Always <code>free</code> When Done<a href="#always-free-when-done" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>First off lets discuss why <code>free</code> is important. Without freeing variables, best case scenario is you end up with leaked memory and worst case could introduce vulnerabilities.</p>
+<h3 id="memory-leaks">Memory Leaks<a href="#memory-leaks" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>When non-pointer variables are declared, they are restricted to the scope in which they were created. The operating system will clear the memory at the end of the scope. For pointers however, allocated memory is not restricted by scope. So if a pointer is not cleared before the end of scope, that memory will still be held by the process. Depending on how large these allocations are, you could fill memory quite quickly. At best this will lead to crashing your own program (if the OS restricts memory), at worst you will crash the system.</p>
+<p>One of the best ways to handle this is with <code>goto</code>&rsquo;s. Yes, despite the hate for <code>goto</code> statements, this is a perfect use for them. Set an anchor at the end of the function, and have all clearing code there. Then during any error within the function, jump to the anchor using <code>goto</code>. The thing is, the <code>goto</code> must be within the same method and later in the logic. A <code>goto</code> statement should never leave the method scope and should never more earlier in the function.</p>
+<p>Also by using the <code>goto</code> and anchor, it will prevent another possible vulnerability, use after free. This is also discussed in the next section.</p>
+<h3 id="vulnerabilities">Vulnerabilities<a href="#vulnerabilities" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The other problem with forgetting to call free is allowing an attacker to gain access to your memory space, which could cause sensitive data to be leaked. By exploiting other vulnerabilities an attacker could gain access to memory that was supposed to be freed. Another problem with forgetting to free is denial of service attacks. An attacker can specifically target the memory leak to overload the system.</p>
+<p>Another vulnerability isn&rsquo;t forgetting to free, but forgetting that you did free. Use after free can be a big issue. If an attacker can fill the memory space that was previously freed, when the program uses the pointer again, instead of erroring out the vulnerable program will use the new data. This could result in code execution, depending on how the memory is used.</p>
+<h2 id="knowing-when-to-free">Knowing When to <code>free</code><a href="#knowing-when-to-free" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>When you as the developer call <code>calloc</code>, <code>malloc</code> or almost anything else with an <code>alloc</code> it&rsquo;s pretty clear that those need to be freed. You declared the pointer and created the memory. But there are other situations that are not as clear, when calling functions that allocate memory.</p>
+<p>These functions could either be built in functions like <code>strdup</code> or ones which you write yourself. Be sure to check and write documentation to be clear on if the memory needs to be freed. This type of allocation can be very easy to forget and could be an easy place to cause memory leaks. The best way to verify, is double check all declared pointers if they need to be freed before finishing the method.</p>
+<p>This is a perfect situation for a <code>goto</code> to an anchor at the end of the method. Then there only needs to be a single <code>free</code> preventing use after free and double free. It also then requires only a single return. This will prevent returning before freeing, reducing the risk of memory leaks.</p>
+<h2 id="knowing-when-not-to-free">Knowing When NOT to <code>free</code><a href="#knowing-when-not-to-free" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Knowing when not to free is not as big of an issue as not freeing, but can still cause issues. Double frees, freeing before allocating, and freeing without allocating can cause your program to crash. It doesn&rsquo;t cause additional errors, but can make you vulnerable to denial of service.</p>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Freeing is vitally important to keeping your programs safe. All allocations need to be freed and it&rsquo;s best to free at the end of the method the pointer was allocated in. This will help prevent use after frees and forgetting to free. An anchor at the end of a method with <code>goto</code> is the best way to accomplish this.</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://flow.halvo.me/posts/rsa-optimization/">
+                <span class="button__icon">←</span>
+                <span class="button__text">RSA Optimization</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://flow.halvo.me/posts/secure-coding-in-c-summations-null-terminate-2/">
+                <span class="button__text">Always null Terminate (Part 2): Summations of Secure Coding in C and C&#43;&#43;</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

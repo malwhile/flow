@@ -1,0 +1,13 @@
+baseURL = "https://flow.halvo.me/"
+languageCode = "en-us"
+title = "Flow With Halvo"
+#theme = "hugo-coder"
+#theme = "ananke"
+#theme = "beautifulhugo"
+#theme = "tranquilpeak"
+#theme = "Binario"
+theme = "hugo-theme-terminal"
+
+[params]
+	custom_css = ["css/table.css"]
+    themeColor = "pink"

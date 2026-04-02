@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Random Algorithm Analysis :: Flow With Halvo</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Introduction After reading through &amp;ldquo;Silence on the Wire&amp;rdquo; by Michal Zalewski for the 8th time, I decided I wanted to try the random algorithm analysis he did in Chapter 10. He looked at the relationship between sequential numbers by graphing them in a 3D scatter plot. My idea was to see if any of the algorithms had been updated to make them more secure.
+There was a problem with that however." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://flow.halvo.me/posts/random-algorithm-analysis/" />
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://flow.halvo.me/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://flow.halvo.me/img/theme-colors/green.png">
+  <link rel="apple-touch-icon" href="https://flow.halvo.me/img/theme-colors/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Random Algorithm Analysis">
+<meta property="og:description" content="Introduction After reading through &amp;ldquo;Silence on the Wire&amp;rdquo; by Michal Zalewski for the 8th time, I decided I wanted to try the random algorithm analysis he did in Chapter 10. He looked at the relationship between sequential numbers by graphing them in a 3D scatter plot. My idea was to see if any of the algorithms had been updated to make them more secure.
+There was a problem with that however." />
+<meta property="og:url" content="https://flow.halvo.me/posts/random-algorithm-analysis/" />
+<meta property="og:site_name" content="Flow With Halvo" />
+
+  
+    <meta property="og:image" content="https://flow.halvo.me/img/favicon/green.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2020-04-17 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="green">
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Flow With Halvo
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/ideas">Ideas</a></li>
+        
+      
+        
+          <li><a href="/podcasts">Podcasts</a></li>
+        
+      
+        
+          <li><a href="/pposts">Other Posts</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+      
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">&nbsp;▾</li>
+            <li>
+              <ul class="menu__dropdown">
+                
+                  
+                    <li><a href="/ideas">Ideas</a></li>
+                  
+                
+                  
+                    <li><a href="/podcasts">Podcasts</a></li>
+                  
+                
+                  
+                    <li><a href="/pposts">Other Posts</a></li>
+                  
+                
+              </ul>
+            </li>
+          </ul>
+        </li>
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://flow.halvo.me/posts/random-algorithm-analysis/">Random Algorithm Analysis</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2020-04-17 ::
+        
+      </time>
+    
+    
+    
+      <span class="post-reading-time">:: 3 min read (491 words)</span>
+    
+  </div>
+
+  
+  
+
+
+  
+    <div class="table-of-contents">
+      <h2>
+        Table of Contents
+      </h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#the-importance">The Importance</a></li>
+    <li><a href="#the-math">The Math</a></li>
+    <li><a href="#the-samples">The Samples</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+  
+
+  <div class="post-content"><div>
+        <h2 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>After reading through &ldquo;Silence on the Wire&rdquo; by Michal Zalewski for the 8th time, I decided I wanted to try the random algorithm analysis he did in Chapter 10. He looked at the relationship between sequential numbers by graphing them in a 3D scatter plot. My idea was to see if any of the algorithms had been updated to make them more secure.</p>
+<p>There was a problem with that however. I only own one computer and it&rsquo;s too low power to run VMs. So I was stuck with the python algorithm, shuf, urandom, and two online random number generators. This was a big limitation and I hope to update this whenever I get a new computer.</p>
+<h2 id="the-importance">The Importance<a href="#the-importance" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Random algorithms cannot be predictable for security reasons. All encryption algorithms use random digits to generate keys. If the keys are predictable, than encryption can be broken. In &ldquo;Silence on the Wire&rdquo; it showed some random algorithms having limited range or predictable patterns to reduce the search space. Luckily the new algorithms seem to be doing better.</p>
+<h2 id="the-math">The Math<a href="#the-math" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Using the math in &ldquo;Silence on the Wire&rdquo; to create the graphs allows me to compare more directly to Mr Zalewski&rsquo;s. Of course this ended up not really mattering, since I was so limited. For a better explanation see the book Chapter 10, but here is a quick run down. Using data samples S0, S1, S2, being a randomly generated sequence, then calculate the deltas and graph those.</p>
+<pre><code>D2 = S2 - S1
+D3 = S3 - S2
+.
+.
+.
+DN = DN - DN-1
+</code></pre>
+<p>Then we graph the deltas in a 3D scatter plot using the following points:</p>
+<pre><code>P2 = (D4, D5, D6)
+P3 = (D7, D8, D9)
+.
+.
+.
+</code></pre>
+<h2 id="the-samples">The Samples<a href="#the-samples" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>The data came from the following locations; JS Math, Python&rsquo;s numby package, random.org, Bash shuf, and urandom. Here are the graphs that were produced &hellip; don&rsquo;t get excited, they are all basically the same:</p>
+<p>Unfortunetally my blog server crashed, so I&rsquo;ve lost the images for now, I&rsquo;ll add them in later. The long and short is they all look basically the same.</p>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Why are these all basically the same &hellip; probably because they all use the same exact algorithm. I was hoping Python had it&rsquo;s own built in PRNG, but it appears to use whatever the host uses. The shuf command and urandom make sense that they are the same. Shuf is kinda just a wrapper around urandom to give the user more control.</p>
+<p>I was also hoping that these couple of web sites would use their own, but it appears they just run on top of Linux servers using urandom.</p>
+<p>The positive to this is it hopefully means more eyes on the random algorithm, making sure they are unpredictable. The problem is if a flaw is found in urandom, it will affect almost everything.</p>
+<p>If anyone wants the code just message me &hellip; it&rsquo;s not complicated.</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://flow.halvo.me/posts/bad-password-analysis-consecutive-character-patterns/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Bad Password Analysis: Consecutive Character Patterns</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://flow.halvo.me/posts/bad-malware-analysis-hash-letter-counts/">
+                <span class="button__text">Bad Malware Analysis: Hash Letter Counts</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

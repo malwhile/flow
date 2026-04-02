@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Exploring Enrollment over Secure Transport :: Flow With Halvo</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Introduction Currently one of my projects uses &amp;ldquo;pinned&amp;rdquo; certs to securely communicate back to a REST service. These are pinned to allow for truly secure authentication of the server, eliminating a rogue certificate authority (CA) to issue a fake cert and allow for man-in-the-middle (MITM) attacks. This is a huge hassle as the server and client need to stay in sync. This involves cutting a new release just to update certs and trying to get them deployed in the expiration/reissue window." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://flow.halvo.me/posts/exploring-enrollment-over-secure-transport/" />
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://flow.halvo.me/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://flow.halvo.me/img/theme-colors/green.png">
+  <link rel="apple-touch-icon" href="https://flow.halvo.me/img/theme-colors/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Exploring Enrollment over Secure Transport">
+<meta property="og:description" content="Introduction Currently one of my projects uses &amp;ldquo;pinned&amp;rdquo; certs to securely communicate back to a REST service. These are pinned to allow for truly secure authentication of the server, eliminating a rogue certificate authority (CA) to issue a fake cert and allow for man-in-the-middle (MITM) attacks. This is a huge hassle as the server and client need to stay in sync. This involves cutting a new release just to update certs and trying to get them deployed in the expiration/reissue window." />
+<meta property="og:url" content="https://flow.halvo.me/posts/exploring-enrollment-over-secure-transport/" />
+<meta property="og:site_name" content="Flow With Halvo" />
+
+  
+    <meta property="og:image" content="https://flow.halvo.me/img/favicon/green.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2023-03-30 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="green">
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Flow With Halvo
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/ideas">Ideas</a></li>
+        
+      
+        
+          <li><a href="/podcasts">Podcasts</a></li>
+        
+      
+        
+          <li><a href="/pposts">Other Posts</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+      
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">&nbsp;▾</li>
+            <li>
+              <ul class="menu__dropdown">
+                
+                  
+                    <li><a href="/ideas">Ideas</a></li>
+                  
+                
+                  
+                    <li><a href="/podcasts">Podcasts</a></li>
+                  
+                
+                  
+                    <li><a href="/pposts">Other Posts</a></li>
+                  
+                
+              </ul>
+            </li>
+          </ul>
+        </li>
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://flow.halvo.me/posts/exploring-enrollment-over-secure-transport/">Exploring Enrollment over Secure Transport</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2023-03-30 ::
+        
+      </time>
+    
+    
+    
+      <span class="post-reading-time">:: 4 min read (788 words)</span>
+    
+  </div>
+
+  
+  
+
+
+  
+    <div class="table-of-contents">
+      <h2>
+        Table of Contents
+      </h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#what-is-est">What is EST</a></li>
+    <li><a href="#possible-setup">Possible Setup</a></li>
+    <li><a href="#final-proposal">Final Proposal</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+  
+
+  <div class="post-content"><div>
+        <h2 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Currently one of my projects uses &ldquo;pinned&rdquo; certs to securely communicate back to a REST service. These are pinned to allow for truly secure authentication of the server, eliminating a rogue certificate authority (CA) to issue a fake cert and allow for man-in-the-middle (MITM) attacks. This is a huge hassle as the server and client need to stay in sync. This involves cutting a new release just to update certs and trying to get them deployed in the expiration/reissue window. <a href="https://www.rfc-editor.org/rfc/rfc7030.html">Enrollment over Secure Transport</a> (EST) should provide a better way to issue certs from the server so the client just has to request the new ones and download them.</p>
+<h2 id="what-is-est">What is EST<a href="#what-is-est" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>EST allows a client to authenticate to the EST server, which then delivers a client cert. This could be unique to the client or generic for all clients. Issued certificates can then be used to re-authenticate to the EST to get the updated cert. By having this re-authentication method, a client can automatically get the most up-to-date cert in a secure way. By not having it compiled into the binary (i.e. pinning) a new release is not needed to simply update the cert.</p>
+<p>To do this, the client authenticates to the EST server, either via public/private key pair or username/password, and the client authenticates the server, either through the same public/private key challenge or external CA. Once authenticated, the EST server will issue the correct cert. All communication is over a TLS connection.</p>
+<h2 id="possible-setup">Possible Setup<a href="#possible-setup" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>First, no to username/password. With username/password authentication, the client will be reliant on an external CA to authorize the server, which is what &ldquo;pinning&rdquo; was supposed remove. So, if username/password is used, there is no real need for an EST server and the client can just connect directly to the server (for our use case).</p>
+<p>So using pub/priv key pair seems to be the best way to move forward. The EST server will have public keys for each client that will be connecting, the clients in turn will either have their key built into the binary or distributed offline. These two methods are almost pure foils of each other, so a pro for one is a con for the other. So let&rsquo;s just look at my preference (spoiler alert) having the client keep track of their key.</p>
+<p>Pros of giving the client their key to keep track of:</p>
+<ul>
+<li>Keeping the key separate makes it easier to revoke if compromised, just give them a new key and have them restart their software</li>
+<li>By keeping it separate it should also mean that it&rsquo;ll be less likely to become compromised, since reverse engineering the binary won&rsquo;t be an issue</li>
+<li>Once initial connection is established the key can be deleted and it&rsquo;s no longer on the client&rsquo;s machine</li>
+</ul>
+<p>Cons of a separate key</p>
+<ul>
+<li>The client must keep track of the key, they could accidentally delete it and need it re-issued</li>
+<li>It adds additional steps to installation as the key needs to be in place for anything to work</li>
+</ul>
+<p>Being able to easily revoke and re-issue a private key is the deciding factor for me. This is the true solve to the problem of pinning. Building in the private key helps with the pinning issue as it doesn&rsquo;t need to be updated as frequently, but it really just delays the issue. Yes it&rsquo;s more work for the client to get everything setup, but a little inconvenience shouldn&rsquo;t get in the way of good security.</p>
+<h2 id="final-proposal">Final Proposal<a href="#final-proposal" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>The final setup could look something like this:</p>
+<ol>
+<li>Pub/Priv key pair is generated</li>
+<li>Pub key is put onto the EST which maintains a database of pub key to TLS cert relationships</li>
+<li>Pub/Piv key pair is given to the client to be put in place upon software installation</li>
+</ol>
+<p>Once the software is installed it would:</p>
+<ol>
+<li>Pull in the priv key</li>
+<li>Connect to the EST</li>
+<li>Establish trust through an encrypted challenge response</li>
+<li>EST issues a unique TLS cert to that client</li>
+<li>Client uses TLS cert to connect and authenticate to backend server</li>
+<li>When TLS cert expires, it can be used to re-auth with the EST and download the next TLS cert</li>
+</ol>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Using this method of authentication with a pub/priv key pair to an EST, then using the issued TLS cert for authentication is the best way to remove the need for pinned certificates and username/passwords. The private key is the primary way the client authenticates, since it uses that key pair to get the TLS cert. Using the TLS cert for authentication makes it so a client doesn&rsquo;t need to continuously update passwords. By having the private key separate from the binary, and the TLS cert for authentication, it becomes relatively simple to re-issue creds when a system is compromised.</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://flow.halvo.me/posts/secure-coding-in-c-summations-file-io/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Concurrency: Summations of Secure Coding in C and C&#43;&#43;</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://flow.halvo.me/posts/secure-coding-in-c-summations-concurrency/">
+                <span class="button__text">Concurrency: Summations of Secure Coding in C and C&#43;&#43;</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
