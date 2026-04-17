@@ -2,9 +2,9 @@
 @import url('https://cdn.staticdelivr.com/gfonts/css2?family=Fira+Code:wght@300..700&display=swap');
 
 :root {
-  --background: #1d2021;
-  --foreground: #ebdbb2;
-  --accent: #8ec07c;
+  --background: #1a170f;
+  --foreground: #e0e0e0;
+  --accent: #a86cd7;
   --radius: 0;
   --font-size: 1rem;
   --line-height: 1.54em;
@@ -24,12 +24,12 @@ html {
 
 body {
   font-family:
-    "Fira Code",
-    "JetBrains Mono",
-    Monaco,
-    Consolas,
-     "Ubuntu Mono",
-    monospace;
+  "Fira Code",
+  "JetBrains Mono",
+  Monaco,
+  Consolas,
+  "Ubuntu Mono",
+  monospace;
   font-size: var(--font-size);
   font-weight: 400;
   line-height: var(--line-height);
@@ -166,15 +166,15 @@ select:active {
 
 select {
   background-image: linear-gradient(
-      45deg,
-      transparent 50%,
-      var(--foreground) 50%
-    ),
-    linear-gradient(135deg, var(--foreground) 50%, transparent 50%);
+    45deg,
+    transparent 50%,
+    var(--foreground) 50%
+  ),
+  linear-gradient(135deg, var(--foreground) 50%, transparent 50%);
   background-position: calc(100% - 20px), calc(100% - 15px);
   background-size:
-    5px 5px,
-    5px 5px;
+  5px 5px,
+  5px 5px;
   background-repeat: no-repeat;
   padding-right: 40px;
 }
@@ -251,12 +251,12 @@ ol li {
 code,
 kbd {
   font-family:
-    "Fira Code",
-    "JetBrains Mono",
-    Monaco,
-    Consolas,
-    Ubuntu Mono,
-    monospace !important;
+  "Fira Code",
+  "JetBrains Mono",
+  Monaco,
+  Consolas,
+  Ubuntu Mono,
+  monospace !important;
   font-feature-settings: normal;
   background: color-mix(in srgb, var(--foreground) 5%, transparent);
   color: color-mix(in srgb, var(--foreground) 5%, var(--accent));
@@ -384,9 +384,4 @@ b, strong,
 th,
 button {
   font-weight: 600;
-}
-
-.read-more {
-  padding-top: 0.9rem !important;
-  font-size: 0.9rem !important;
 }
