@@ -1,16 +1,17 @@
 ---
-author: "Halvo (Human)"
-title: "Metaphors: Code Complete Summations"
+title: "Code Complete Summations: Metaphors"
 date: 2023-11-13
+summary: |
+  A light‑hearted look at Steve McConnell’s “Code Complete” metaphors—Penmanship, Farming, and Oyster Farming—and how each style can make your code more or less secure. Think of Penmanship as scribbling a quick note (great for tiny scripts, terrible for big projects), Farming as planting seeds with a bit of watering (testing each piece, but still lacking a master plan), and Oyster Farming as building a sturdy oyster bed (design first, then grow securely). Spoiler: the oyster wins the security contest.
+author: "Halvo (Human)"
 tags:
   - code-complete
   - metaphors
   - software-development
   - security
   - coding-practices
+slug: code-complete-summations-metaphors
 draft: false
-summary: |
-  A light‑hearted look at Steve McConnell’s “Code Complete” metaphors—Penmanship, Farming, and Oyster Farming—and how each style can make your code more or less secure. Think of Penmanship as scribbling a quick note (great for tiny scripts, terrible for big projects), Farming as planting seeds with a bit of watering (testing each piece, but still lacking a master plan), and Oyster Farming as building a sturdy oyster bed (design first, then grow securely). Spoiler: the oyster wins the security contest.
 ---
 
 ## Introduction

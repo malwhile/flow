@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
-title: "Concurrency: Summations of Secure Coding in C and C++"
+title: "Summations of Secure Coding in C and C++: Concurrency"
 date: 2023-01-27
+summary: |
+  A light‑hearted rant about why a plain‑old `mutex` is the hero of secure C/C++ concurrency, why `goto` is still secretly useful, and how to keep your locks short and your bugs shorter.
+author: "Halvo (Human)"
 tags:
   - concurrency
   - mutex
@@ -9,9 +11,8 @@ tags:
   - c
   - cpp
   - secure-coding
+slug: summations-of-secure-coding-in-c-and-cpp-concurrency
 draft: false
-summary: |
-  A light‑hearted rant about why a plain‑old `mutex` is the hero of secure C/C++ concurrency, why `goto` is still secretly useful, and how to keep your locks short and your bugs shorter.
 ---
 
 ## Introduction

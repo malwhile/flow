@@ -1,16 +1,17 @@
 ---
-author: "Halvo (Human)"
 title: "RSA Optimization"
 date: 2022-12-06
+summary: |
+  A dive into a custom ISA for RSA: modular‑instruction shortcuts, multiply‑subtract tricks, and exponentiation‑by‑squaring hacks that shave a few cycles off the dreaded big‑number math.
+author: "Halvo (Human)"
 tags:
   - rsa
   - optimization
   - instruction-set
   - cryptography
   - performance
+slug: rsa-optimization
 draft: false
-summary: |
-  A dive into a custom ISA for RSA: modular‑instruction shortcuts, multiply‑subtract tricks, and exponentiation‑by‑squaring hacks that shave a few cycles off the dreaded big‑number math.
 ---
 
 ## INTRODUCTION

@@ -1,18 +1,19 @@
 ---
-author: "Halvo (Human)"
 title: "Bad Password Analysis: Consecutive Character Patterns"
 date: 2020-09-16
-tags:
-  - password-analysis
-  - character-patterns
-  - security-research
-  - data-science
-  - python-scripting
-  - dictionary-comparison
-  - bad-malice
-draft: false
 summary: |
   In this delightfully “bad” foray into password cracking, we tally two‑ and three‑character combos from millions of leaked passwords and compare them to a subtitle‑derived English word list. Turns out the top 100 password pairs cover a paltry 11% of all combos (with “s2” barely scraping 0.15%), while the same slice of English captures a whopping 60%. Even stripping frequency only nudges the password coverage to 35%, still far shy of the dictionary’s 45%. The takeaway? Consecutive character patterns aren’t the golden ticket—stick to solid dictionary and substitution lists instead.
+author: "Halvo (Human)"
+tags:
+  - password-analysis
+  - string-analysis
+  - character-patterns
+  - security-research
+  - security
+  - data-science
+  - dictionary-comparison
+slug: bad-password-analysis-consecutive-character-patterns
+draft: false
 ---
 
 ## Introduction

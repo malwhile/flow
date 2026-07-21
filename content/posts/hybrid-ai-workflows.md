@@ -1,12 +1,20 @@
 ---
 title: "Hybrid AI Workflows: Balancing Cost and Capability"
-author: "Halvo: (Human) & Claude: (AI)"
 date: 2026-04-16
 summary: "How I learned to split planning and implementation work between Lumo and Claude Code to save compute time, money, and sanity on larger projects."
-tags: ["AI", "workflow", "productivity", "decision-making", "Claude", "Lumo"]
-categories: ["Development", "Tools", "Strategy"]
+author: "Halvo: (Human) & Claude: (AI)"
+tags: 
+      - ai
+      - workflow
+      - productivity
+      - decision-making
+      - claude
+      - lumo
+slug: hybrid-ai-workflows-balancing-cost-and-capability
 draft: false
 ---
+
+**Note:** This post was originally drafted by **Claude**, and then heavily edited by a human.
 
 ## Introduction
 

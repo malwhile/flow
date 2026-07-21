@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
 title: "Fast Flux Botnet Overview"
 date: 2019-09-26
+summary: |
+  A breezy, tour of fast‑flux botnets, those sneaky DNS tricks that let malicious actors hop around like digital grasshoppers. We’ll peek at how dynamic DNS and round‑robin magic keep the bad guys’ command‑and‑control servers slippery, and glance at the cat‑and‑mouse game of detection (TTL tricks, activity indexes, and the occasional semantic sleuthing). Spoiler: it’s a wild ride, but the good news is there are ways to shine a flashlight on the flux.
+author: "Halvo (Human)"
 tags:
   - fast-flux
   - botnet
@@ -9,9 +11,8 @@ tags:
   - detection
   - mitigation
   - security
+slug: fast-flux-botnet-overview
 draft: false
-summary: |
-  A breezy, tour of fast‑flux botnets, those sneaky DNS tricks that let malicious actors hop around like digital grasshoppers. We’ll peek at how dynamic DNS and round‑robin magic keep the bad guys’ command‑and‑control servers slippery, and glance at the cat‑and‑mouse game of detection (TTL tricks, activity indexes, and the occasional semantic sleuthing). Spoiler: it’s a wild ride, but the good news is there are ways to shine a flashlight on the flux.
 ---
 
 ## Introduction

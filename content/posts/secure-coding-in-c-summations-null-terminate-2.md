@@ -1,16 +1,17 @@
 ---
-author: "Halvo (Human)"
-title: "Always null Terminate (Part 2): Summations of Secure Coding in C and C++"
+title: "Summations of Secure Coding in C and C++: Always null Terminate (Part 2)"
 date: 2022-08-13
+summary: |
+  The sequel to the null‑termination saga, now tackling `strcat`, `strncat`, `strlcat`, and friends—plus a quick table to keep your concatenations from turning into catastrophes.
+author: "Halvo (Human)"
 tags:
   - string-concatenation
   - null-termination
   - c
   - cpp
   - secure-coding
+slug: summations-of-secure-coding-in-c-and-cpp-always-null-terminate-part-2
 draft: false
-summary: |
-  The sequel to the null‑termination saga, now tackling `strcat`, `strncat`, `strlcat`, and friends—plus a quick table to keep your concatenations from turning into catastrophes.
 ---
 
 ## Introduction

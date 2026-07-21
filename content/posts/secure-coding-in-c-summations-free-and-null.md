@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
-title: "Set to NULL After Free: Summations of Secure Coding in C and C++"
+title: "Summations of Secure Coding in C and C++: Set to NULL After Free"
 date: 2022-08-17
+summary: |
+  A breezy, slightly tongue‑in‑cheek look at why setting pointers to `NULL` right after `free` (and a few related memory‑management niceties) can save you from nasty use‑after‑free bugs, memory leaks, and the occasional midnight debugging panic.
+author: "Halvo (Human)"
 tags:
   - free-and-null
   - secure-coding
@@ -10,9 +12,8 @@ tags:
   - memory-management
   - pointers
   - security
+slug: summations-of-secure-coding-in-c-and-cpp-set-to-null-after-free
 draft: false
-summary: |
-  A breezy, slightly tongue‑in‑cheek look at why setting pointers to `NULL` right after `free` (and a few related memory‑management niceties) can save you from nasty use‑after‑free bugs, memory leaks, and the occasional midnight debugging panic.
 ---
 
 ## Introduction

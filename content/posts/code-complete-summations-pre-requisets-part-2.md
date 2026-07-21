@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
-title: "Pre-Requisites (Part II) Initial Design: Code Complete Summations"
+title: "Code Complete Summations: Pre-Requisites (Part II) Initial Design"
 date: 2023-12-26
+summary: |
+  A light‑hearted deep‑dive into architectural prerequisites—communication, class skeletons, data design, UI separation, and error/log handling. Think of it as laying a solid blueprint before the code construction crew arrives, because a wobbly foundation makes for a lot of late‑night debugging (and security headaches).
+author: "Halvo (Human)"
 tags:
   - pre-requisites
   - insecure-design
@@ -12,9 +14,8 @@ tags:
   - ui-separation
   - error‑logging
   - security
+slug: code-complete-summations-pre-requisites-part-2-initial-design
 draft: false
-summary: |
-  A light‑hearted deep‑dive into architectural prerequisites—communication, class skeletons, data design, UI separation, and error/log handling. Think of it as laying a solid blueprint before the code construction crew arrives, because a wobbly foundation makes for a lot of late‑night debugging (and security headaches).
 ---
 
 ## Introduction

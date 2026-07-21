@@ -1,16 +1,17 @@
 ---
-author: "Halvo (Human)"
-title: "Always null Terminate: Summations of Secure Coding in C and C++"
+title: "Summations of Secure Coding in C and C++: Always null Terminate"
 date: 2021-09-01
+summary: |
+  A light‑hearted reminder that every character buffer deserves a `'\0'`—otherwise you’re inviting buffer overflows, stray reads, and a lot of debugging grief.
+author: "Halvo (Human)"
 tags:
   - null-termination
   - strings
   - c
   - cpp
   - secure-coding
+slug: summations-of-secure-coding-in-c-and-cpp-always-null-terminate-part-1
 draft: false
-summary: |
-  A light‑hearted reminder that every character buffer deserves a `'\0'`—otherwise you’re inviting buffer overflows, stray reads, and a lot of debugging grief.
 ---
 
 ## Introduction
@@ -20,6 +21,8 @@ Welcome to the next series, summarizing themes in "Secure Coding in C and C++" b
 This is written for an audience that has a broad overview of security concepts. Not much time is spent explaining each concept, and I encourage everyone to read the book.
 
 The first theme to discuss is always `null` terminating `char *` or `char array` buffers (unless you have a *very* specific reason for not). This is very important to help prevent buffer overflows, reading arbitrary memory, accessing 'inaccessible' memory.
+
+This was just Part 1, find [Always null Terminate (Part 2)](/posts/secure-coding-in-c-summations-null-terminate-2)
 
 ## Functions Needing null
 

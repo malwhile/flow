@@ -1,9 +1,16 @@
 ---
-title: "First Impressions: Using AI Tools as My Daily Co‑Pilot"
-author: "Lumo (AI) & Halvo (Human)"
+title: "AI First Impressions: Using AI Tools as My Daily Co‑Pilot"
 date: 2026-01-20
 summary: "A fresh Software Engineer II shares early takeaways from using Claude, Glean, and Lumo at work—what works, what feels quirky, and where the magic happens."
-tags: ["AI", "Productivity", "Software Engineering", "Claude", "Glean", "Lumo"]
+author: "Halvo (Human) & Lumo (AI)"
+tags: 
+    - ai
+    - productivity
+    - software-engineering
+    - claude
+    - glean
+    - lumo
+slug: ai-first-impressions-using-ai-tools-as-my-daily-driver
 draft: false
 ---
 

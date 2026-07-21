@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
-title: "Concurrency: Summations of Secure Coding in C and C++"
+title: "Summations of Secure Coding in C and C++: File IO"
 date: 2023-06-29
+summary: |
+  A breezy guide to keeping file operations safe: validate paths, lock down permissions, and never let a privileged process wander into a user’s temp folder.
+author: "Halvo (Human)"
 tags:
   - file-io
   - secure-coding
@@ -9,9 +11,8 @@ tags:
   - cpp
   - permissions
   - least-privilege
+slug: summations-of-secure-coding-in-c-and-cpp-file-io
 draft: false
-summary: |
-  A breezy guide to keeping file operations safe: validate paths, lock down permissions, and never let a privileged process wander into a user’s temp folder.
 ---
 
 ## Introduction

@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
-title: "Pre-Requisites (Part I) Initial Design: Code Complete Summations"
+title: "Code Complete Summations: Pre-Requisites (Part I) Initial Design"
 date: 2023-12-20
+summary: |
+  A breezy, slightly tongue‑in‑cheek look at why solid planning isn’t just good housekeeping—it’s a frontline defense. We walk through OWASP’s Insecure Design warning, compare personal versus mission‑critical projects, and tease out iterative vs. sequential approaches, all with a sprinkle of humor to keep the security talk from feeling like a lecture.
+author: "Halvo (Human)"
 tags:
   - pre-requisites
   - insecure-design
@@ -10,9 +12,8 @@ tags:
   - software-design
   - planning
   - requirements
+slug: code-complete-summations-pre-requisites-part-1-initial-design
 draft: false
-summary: |
-  A breezy, slightly tongue‑in‑cheek look at why solid planning isn’t just good housekeeping—it’s a frontline defense. We walk through OWASP’s Insecure Design warning, compare personal versus mission‑critical projects, and tease out iterative vs. sequential approaches, all with a sprinkle of humor to keep the security talk from feeling like a lecture.
 ---
 
 ## Introduction

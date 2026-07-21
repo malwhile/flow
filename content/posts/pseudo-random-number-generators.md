@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
-title: "Pseudo Random Number generators"
+title: "Pseudo Random Number Generators"
 date: 2024-03-22
+summary: |
+  A light‑hearted tour of the quirky ways we coax randomness out of lava‑lamps, Geiger counters, ambient noise, and good‑old motherboard sensors, because good cryptography needs a little chaos (and a lot of fun).
+author: "Halvo (Human)"
 tags:
   - prng
   - randomness
@@ -9,9 +11,8 @@ tags:
   - entropy
   - hardware
   - security
+slug: pseudo-random-number-generators
 draft: false
-summary: |
-  A light‑hearted tour of the quirky ways we coax randomness out of lava‑lamps, Geiger counters, ambient noise, and good‑old motherboard sensors, because good cryptography needs a little chaos (and a lot of fun).
 ---
 
 ## Introduction

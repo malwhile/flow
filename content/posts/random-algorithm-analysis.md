@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
 title: "Random Algorithm Analysis"
 date: 2020-04-17
+summary: |
+  A playful replay of Zalewski’s “Silence on the Wire” experiment: plotting 3‑D scattergrams of various RNGs (Python, shuf, urandom, online services) to see if any have secretly upgraded their magic. Spoiler: they all look suspiciously alike.
+author: "Halvo (Human)"
 tags:
   - random-algorithms
   - analysis
@@ -9,9 +11,8 @@ tags:
   - security
   - python
   - randomness
+slug: random-algorithm-analysis
 draft: false
-summary: |
-  A playful replay of Zalewski’s “Silence on the Wire” experiment: plotting 3‑D scattergrams of various RNGs (Python, shuf, urandom, online services) to see if any have secretly upgraded their magic. Spoiler: they all look suspiciously alike.
 ---
 
 ## Introduction

@@ -1,17 +1,18 @@
 ---
-author: "Halvo (Human)"
 title: "Bad Password Analysis Dictionary Words"
 date: 2021-03-11
-tags:
-  - password-analysis
-  - dictionary-words
-  - security-research
-  - data-science
-  - python-scripting
-  - bad-malice
-draft: false
 summary: |
   In this delightfully “bad” dive into password hygiene, we scrape millions of leaked passwords for the first dictionary word they contain. The top ten words (love, baby, password…) barely scratch 5% of the total, and a whopping 21k words appear only once. We also compare happy vs. angry vocab. Turns out love trumps f**k by a healthy margin. The takeaway? Stick to random passphrases; dictionary words are a playground for attackers and a source of endless amusement for analysts.
+author: "Halvo (Human)"
+tags:
+  - password-analysis
+  - string-analysis
+  - dictionary-words
+  - security-research
+  - security
+  - data-science
+slug: bad-password-analysis-dictionary-words
+draft: false
 ---
 
 ## Introduction

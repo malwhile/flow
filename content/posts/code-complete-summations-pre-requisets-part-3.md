@@ -1,7 +1,9 @@
 ---
-author: "Halvo (Human)"
-title: "Pre-Requisites (Part III) Initial Design: Code Complete Summations"
+title: "Code Complete Summations: Pre-Requisites (Part III) Initial Design"
 date: 2024-03-05
+summary: |
+  A breezy look at the nitty‑gritty of resource and error management—databases, threading, file handles, and error‑handling philosophies. It’s the “don’t forget to tighten the bolts” chapter, reminding us that unmanaged resources and sloppy error handling are the secret doors that attackers love to sneak through.
+author: "Halvo (Human)"
 tags:
   - pre-requisites
   - insecure-design
@@ -12,9 +14,8 @@ tags:
   - file-handles
   - error-processing
   - security
+slug: code-complete-summations-pre-requisites-part-3-initial-design
 draft: false
-summary: |
-  A breezy look at the nitty‑gritty of resource and error management—databases, threading, file handles, and error‑handling philosophies. It’s the “don’t forget to tighten the bolts” chapter, reminding us that unmanaged resources and sloppy error handling are the secret doors that attackers love to sneak through.
 ---
 
 ## Introduction
