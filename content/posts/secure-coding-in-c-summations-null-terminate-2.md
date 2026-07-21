@@ -16,11 +16,11 @@ draft: false
 
 ## Introduction
 
-Series on summarizing themes in "Secure Coding in C and C++" by Robert C. Seacord, part 2. Find part 1 here [Always null Terminate (Part 1)](/posts/secure-coding-in-c-summations-null-terminate). We are currently going through this book in our work book club and there are a lot of good themes that seem to be threaded through the book. These are my notes, thoughts, and summaries on some of what I've read and our book club have discussed.
+Series on summarizing themes in "Secure Coding in C and C++" by Robert C. Seacord, part 2. Find part 1 here [Always null Terminate (Part 1)](/posts/summations-of-secure-coding-in-c-and-cpp-always-null-terminate-part-1). We are currently going through this book in our work book club and there are a lot of good themes that seem to be threaded through the book. These are my notes, thoughts, and summaries on some of what I've read and our book club have discussed.
 
 This is written for an audience that has a broad overview of security concepts. Not much time is spent explaining each concept, and I encourage everyone to read the book.
 
-The first theme to discuss is always `null` terminating `char *` or `char array` buffers (unless you have a *very* specific reason for not). This is very important to help prevent buffer overflows, reading arbitrary memory, accessing 'inaccessible' memory. This is part 2 where we will discuss string cat and length. For a brief discussion on string copy see [part 1](posts/secure-coding-in-c-summations-null-terminate.md).
+The first theme to discuss is always `null` terminating `char *` or `char array` buffers (unless you have a *very* specific reason for not). This is very important to help prevent buffer overflows, reading arbitrary memory, accessing 'inaccessible' memory. This is part 2 where we will discuss string cat and length. For a brief discussion on string copy see [part 1](/posts/summations-of-secure-coding-in-c-and-cpp-always-null-terminate-part-1).
 
 ## Functions Needing null
 

@@ -18,7 +18,7 @@ draft: false
 
 Prerequisites are incredibly important to any development project and was the [OWASP Top 10, Number 4, Insecure Design](https://owasp.org/Top10/A04_2021-Insecure_Design/). For the purpose of this document we will talk about it in context of *security implications*.
 
-This ended up being too big of a topic for just one post, so here is part 2. In [Pre Requisets Part 1](/posts/code-complete-summations-pre-requisets-part-1), we looked at why pre-reqs are needed in general and how they apply to types of projects. In part 2 we'll look at architectural pre-reqs.
+This ended up being too big of a topic for just one post, so here is part 2. In [Pre Requisets Part 1](/posts/code-complete-summations-pre-requisites-part-1-initial-design), we looked at why pre-reqs are needed in general and how they apply to types of projects. In part 2 we'll look at architectural pre-reqs.
 
 ## Planning Comes First
 

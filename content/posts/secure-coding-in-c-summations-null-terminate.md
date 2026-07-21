@@ -22,7 +22,7 @@ This is written for an audience that has a broad overview of security concepts. 
 
 The first theme to discuss is always `null` terminating `char *` or `char array` buffers (unless you have a *very* specific reason for not). This is very important to help prevent buffer overflows, reading arbitrary memory, accessing 'inaccessible' memory.
 
-This was just Part 1, find [Always null Terminate (Part 2)](/posts/secure-coding-in-c-summations-null-terminate-2)
+This was just Part 1, find [Always null Terminate (Part 2)](/posts/summations-of-secure-coding-in-c-and-cpp-always-null-terminate-part-2)
 
 ## Functions Needing null
 

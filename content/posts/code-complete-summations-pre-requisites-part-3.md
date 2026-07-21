@@ -18,7 +18,7 @@ draft: false
 
 Prerequisites are incredibly important to any development project and was the [OWASP Top 10, Number 4, Insecure Design](https://owasp.org/Top10/A04_2021-Insecure_Design/). For the purpose of this document we will talk about it in context of *security implications*.
 
-This ended up being too big of a topic for just two posts, so here is part 3. In [Pre Requisets Part 1](/posts/code-complete-summations-pre-requisets-part-1), we looked at why pre-reqs are needed in general and how they apply to types of projects. In [Pre Requisets Part 2](/posts/code-complete-summations-pre-requisets-part-2) we looked at how various pre-reqs for architecture helps with security. In part 3 we'll look at resource and error management pre-reqs.
+This ended up being too big of a topic for just two posts, so here is part 3. In [Pre Requisets Part 1](/posts/code-complete-summations-pre-requisites-part-1-initial-design), we looked at why pre-reqs are needed in general and how they apply to types of projects. In [Pre Requisets Part 2](/posts/code-complete-summations-pre-requisites-part-2-initial-design) we looked at how various pre-reqs for architecture helps with security. In part 3 we'll look at resource and error management pre-reqs.
 
 ## Planning Comes First
 
@@ -44,7 +44,7 @@ Threading and data access is relevant for corrupted data. The data could be corr
 
 ### File Handles
 
-In a previous post [File IO](/posts/secure-coding-in-c-summations-file-io) we discussed in detail why file access is a security issue. By designing out from the beginning how files are going to be accessed will greatly reduce those security issues.
+In a previous post [File IO](/posts/summations-of-secure-coding-in-c-and-cpp-file-io) we discussed in detail why file access is a security issue. By designing out from the beginning how files are going to be accessed will greatly reduce those security issues.
 
 ## Error Processing
 
