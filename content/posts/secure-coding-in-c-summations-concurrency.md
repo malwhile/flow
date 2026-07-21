@@ -5,12 +5,11 @@ summary: |
   A light‑hearted rant about why a plain‑old `mutex` is the hero of secure C/C++ concurrency, why `goto` is still secretly useful, and how to keep your locks short and your bugs shorter.
 author: "Halvo (Human)"
 tags:
-  - concurrency
-  - mutex
-  - threading
-  - c
-  - cpp
   - secure-coding
+  - c-cpp
+  - threading
+  - security
+  - summation
 slug: summations-of-secure-coding-in-c-and-cpp-concurrency
 draft: false
 ---

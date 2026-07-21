@@ -5,11 +5,11 @@ summary: |
   The sequel to the null‑termination saga, now tackling `strcat`, `strncat`, `strlcat`, and friends—plus a quick table to keep your concatenations from turning into catastrophes.
 author: "Halvo (Human)"
 tags:
-  - string-concatenation
-  - null-termination
-  - c
-  - cpp
   - secure-coding
+  - c-cpp
+  - string-analysis
+  - security
+  - summation
 slug: summations-of-secure-coding-in-c-and-cpp-always-null-terminate-part-2
 draft: false
 ---

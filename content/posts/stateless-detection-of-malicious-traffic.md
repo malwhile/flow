@@ -5,11 +5,10 @@ summary: |
   A recap of my master’s thesis that proves you can sniff out nasty traffic using only one‑way packet metadata (TTL, ports, timing)—no payload inspection required.
 author: "Halvo (Human)"
 tags:
-  - stateless-detection
   - network-security
-  - traffic-analysis
-  - ids
+  - malware-analysis
   - machine-learning
+  - research-paper
 slug: stateless-detection-of-malicious-traffic
 draft: false
 ---

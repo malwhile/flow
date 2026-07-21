@@ -6,10 +6,9 @@ summary: |
 author: "Halvo (Human)"
 tags:
   - code-complete
-  - metaphors
-  - software-development
+  - software-design
   - security
-  - coding-practices
+  - summation
 slug: code-complete-summations-metaphors
 draft: false
 ---

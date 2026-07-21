@@ -5,11 +5,11 @@ summary: |
   A light‑hearted reminder that every character buffer deserves a `'\0'`—otherwise you’re inviting buffer overflows, stray reads, and a lot of debugging grief.
 author: "Halvo (Human)"
 tags:
-  - null-termination
-  - strings
-  - c
-  - cpp
   - secure-coding
+  - c-cpp
+  - string-analysis
+  - security
+  - summation
 slug: summations-of-secure-coding-in-c-and-cpp-always-null-terminate-part-1
 draft: false
 ---

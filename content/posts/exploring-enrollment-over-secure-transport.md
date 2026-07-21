@@ -5,13 +5,11 @@ summary: |
   A light‑hearted dive into RFC 7030 (EST) as a smarter alternative to hard‑coded, pinned certificates. By letting clients fetch fresh TLS certs via a public‑key‑authenticated EST server, you dodge the nightly release‑cycle nightmare, gain easy revocation, and keep the private key out of the binary—plus a dash of extra work for the user that’s worth the security payoff.
 author: "Halvo (Human)"
 tags:
-  - est
-  - secure-transport
-  - certificate-pinning
-  - public-key
+  - cryptography
   - tls
   - authentication
   - security
+  - guide
 slug: exploring-enrollment-over-secure-transport
 draft: false
 ---

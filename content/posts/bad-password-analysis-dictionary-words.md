@@ -7,10 +7,8 @@ author: "Halvo (Human)"
 tags:
   - password-analysis
   - string-analysis
-  - dictionary-words
   - security-research
-  - security
-  - data-science
+  - analysis
 slug: bad-password-analysis-dictionary-words
 draft: false
 ---

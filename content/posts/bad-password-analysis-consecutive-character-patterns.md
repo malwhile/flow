@@ -7,11 +7,8 @@ author: "Halvo (Human)"
 tags:
   - password-analysis
   - string-analysis
-  - character-patterns
   - security-research
-  - security
-  - data-science
-  - dictionary-comparison
+  - analysis
 slug: bad-password-analysis-consecutive-character-patterns
 draft: false
 ---

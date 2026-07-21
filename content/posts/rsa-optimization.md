@@ -5,11 +5,10 @@ summary: |
   A dive into a custom ISA for RSA: modular‑instruction shortcuts, multiply‑subtract tricks, and exponentiation‑by‑squaring hacks that shave a few cycles off the dreaded big‑number math.
 author: "Halvo (Human)"
 tags:
+  - cryptography
   - rsa
   - optimization
-  - instruction-set
-  - cryptography
-  - performance
+  - security
 slug: rsa-optimization
 draft: false
 ---

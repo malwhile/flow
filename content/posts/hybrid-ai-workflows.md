@@ -6,11 +6,10 @@ summary: |
 author: "Halvo (Human) & Claude (AI)"
 tags:
   - ai
-  - workflow
   - productivity
-  - decision-making
-  - claude
-  - lumo
+  - software-engineering
+  - workflow
+  - optimization
 slug: hybrid-ai-workflows-balancing-cost-and-capability
 draft: false
 ---

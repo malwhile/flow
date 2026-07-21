@@ -8,9 +8,7 @@ tags:
   - ai
   - productivity
   - software-engineering
-  - glean
-  - claude
-  - lumo
+  - workflow
 slug: using-ai-as-my-daily-driver-at-work
 draft: false
 ---

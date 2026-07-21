@@ -5,13 +5,11 @@ summary: |
   A breezy, slightly tongue‑in‑cheek look at why solid planning isn’t just good housekeeping—it’s a frontline defense. We walk through OWASP’s Insecure Design warning, compare personal versus mission‑critical projects, and tease out iterative vs. sequential approaches, all with a sprinkle of humor to keep the security talk from feeling like a lecture.
 author: "Halvo (Human)"
 tags:
-  - pre-requisites
-  - insecure-design
-  - owasp-top-10
-  - security
+  - code-complete
   - software-design
+  - security
   - planning
-  - requirements
+  - summation
 slug: code-complete-summations-pre-requisites-part-1-initial-design
 draft: false
 ---

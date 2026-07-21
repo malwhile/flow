@@ -5,11 +5,10 @@ summary: |
   Why we moved our PTA website from WordPress to Weebly—and whether it was the right call.
 author: "Halvo (Human) & Claude (Haiku 4.5)"
 tags:
-  - website
+  - website-migration
   - wordpress
-  - weebly
-  - pta
   - technology
+  - guide
 slug: migrating-from-wordpress-to-weebly-a-ptas-journey
 draft: false
 ---

@@ -5,11 +5,11 @@ summary: |
   A breezy look at why good variable names, sensible placement, proper initialization, and single‑purpose usage aren’t just tidy coding habits—they’re tiny security shields. Clear names like `sanitizedUserInput` keep bugs (and attackers) from slipping through the cracks, while keeping variables close to their use and initialized from the get‑go reduces the chance of leaks, memory mishaps, and confusing code.
 author: "Halvo (Human)"
 tags:
-  - variable-naming
   - code-complete
+  - secure-coding
+  - software-design
   - security
-  - best-practices
-  - software-development
+  - summation
 slug: code-complete-summations-variable-usage
 draft: false
 ---

@@ -5,12 +5,10 @@ summary: |
   A light‑hearted tour of the quirky ways we coax randomness out of lava‑lamps, Geiger counters, ambient noise, and good‑old motherboard sensors, because good cryptography needs a little chaos (and a lot of fun).
 author: "Halvo (Human)"
 tags:
-  - prng
-  - randomness
   - cryptography
-  - entropy
-  - hardware
+  - prng
   - security
+  - hardware-security
 slug: pseudo-random-number-generators
 draft: false
 ---

@@ -5,12 +5,10 @@ summary: |
   A playful replay of Zalewski’s “Silence on the Wire” experiment: plotting 3‑D scattergrams of various RNGs (Python, shuf, urandom, online services) to see if any have secretly upgraded their magic. Spoiler: they all look suspiciously alike.
 author: "Halvo (Human)"
 tags:
-  - random-algorithms
+  - cryptography
+  - prng
   - analysis
-  - silence-on-the-wire
-  - security
-  - python
-  - randomness
+  - research-paper
 slug: random-algorithm-analysis
 draft: false
 ---

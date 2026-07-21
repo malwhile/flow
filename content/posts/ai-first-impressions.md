@@ -8,9 +8,7 @@ tags:
   - ai
   - productivity
   - software-engineering
-  - claude
-  - glean
-  - lumo
+  - workflow
 slug: ai-first-impressions-using-ai-tools-as-my-daily-driver
 draft: false
 ---

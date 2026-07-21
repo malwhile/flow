@@ -5,15 +5,11 @@ summary: |
   A breezy look at the nitty‑gritty of resource and error management—databases, threading, file handles, and error‑handling philosophies. It’s the “don’t forget to tighten the bolts” chapter, reminding us that unmanaged resources and sloppy error handling are the secret doors that attackers love to sneak through.
 author: "Halvo (Human)"
 tags:
-  - pre-requisites
-  - insecure-design
-  - owasp-top-10
-  - resource-management
-  - databases
-  - threading
-  - file-handles
-  - error-processing
+  - code-complete
+  - software-design
   - security
+  - resource-management
+  - summation
 slug: code-complete-summations-pre-requisites-part-3-initial-design
 draft: false
 ---
