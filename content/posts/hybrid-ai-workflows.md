@@ -82,14 +82,14 @@ Here's the workflow for something like [heimwatch](https://github.com/malwhile/h
 
 ### Human Involvement
 
-Every step of the way, a skilled human is absolutely necissary.
+Every step of the way, a skilled human is absolutely necessary.
 
 Going back to [How It Works in Practice](#how-it-works)
 
 1. **Lumo Phase**: Planning must be detailed
    - Clear and concise goal
       - Goals are more inportant than inputs and outputs, what the outputs are *needed for* informs what they *are*
-      - Once and overall architecture is set, break the problem set down smaller and focus on those goals
+      - Once an overall architecture is set, break the problem set down smaller and focus on those goals
       - Lumo was helpful in creating those sub-goals as well
    - Have a conversation
       - Ask Lumo to ask questions

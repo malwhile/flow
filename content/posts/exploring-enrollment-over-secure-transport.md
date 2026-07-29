@@ -49,7 +49,7 @@ The final setup could look something like this:
 
 1. Pub/Priv key pair is generated
 1. Pub key is put onto the EST which maintains a database of pub key to TLS cert relationships
-1. Pub/Piv key pair is given to the client to be put in place upon software installation
+1. Pub/Priv key pair is given to the client to be put in place upon software installation
 
 Once the software is installed it would:
 

@@ -2,15 +2,14 @@
 title: Thoughts on AI for Blogging vs Coding
 date: 2026-07-28
 summary: |
-  Exploring why AI falls short for blog writing but excels as a development tool. The author discusses tone, formatting challenges with AI-generated content, and outlines a practical hybrid workflow: writing content manually while using AI for summaries, tags, and verification.
+  Why AI is terrible at writing my blog but amazing for coding. I walk through the tone and formatting nightmares that made me abandon AI-generated content, and explain why I'm keeping it as a co-pilot for development instead—just not for writing.
 author: Halvo (Human)
 tags:
   - ai
-  - blogging
-  - coding
-  - tools
-  - workflow
   - ai-ethics
+  - blogging
+  - workflow
+  - software-engineering
 slug: thoughts-on-ai-for-blogging-vs-coding
 draft: false
 ---
@@ -35,7 +34,7 @@ At the end of the day, whether I wrote the blog, an AI did and I edited it, or I
 
 ### Formatting
 
-There were two big formatting issues, layout (including header naming) and character usage. Overall, I like to use ASCII as much as possible (unless otherwise needed or for emojies 😂). The AI would use em dashes instead of hyphens or commas ... all over the place. Even updating my SKILL to explicitly disallow it, didn't work. That was probably the biggest annoyance. It would also pretty consistently use fancy double quotes instead of regular.
+There were two big formatting issues, layout (including header naming) and character usage. Overall, I like to use ASCII as much as possible (unless otherwise needed or for emojis 😂). The AI would use em dashes instead of hyphens or commas ... all over the place. Even updating my SKILL to explicitly disallow it, didn't work. That was probably the biggest annoyance. It would also pretty consistently use fancy double quotes instead of regular.
 
 For layout, depending on the post, sometimes I like to "theme" my headings. Questions, statements, few words, lots of words, use one or two as a joke, etc. It is really hard to put that kind of wishy-washy on-the-fly decision making into a SKILL or rule for the AI.
 
@@ -43,7 +42,7 @@ For layout, depending on the post, sometimes I like to "theme" my headings. Ques
 
 Maybe I could spend some time to really curate my blogging SKILL, maybe even have multiple agents work on it at the same time, to get the type of output I'm looking for. Maybe I could make it so close to perfect, that I wouldn't have to make many changes. Maybe I could get it to the point of being able to just throw ideas at the wall (read AI) and have new blog posts every week at almost no effort from me.
 
-But why. Why even have a blog if I'm just going to have AI write it whole sale. Why work so hard to create rules, that may or may not work for new models, so I don't have to be creative in any way.
+But why. Why even have a blog if I'm just going to have AI write it wholesale. Why work so hard to create rules, that may or may not work for new models, so I don't have to be creative in any way.
 
 Recently I heard a line from Hank Green, "No effort is wasted". AI might have effort up front (so not wasted), but then it just does all the work for me after that. In the case of a blog that doesn't seem worth it.
 
